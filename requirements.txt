@@ -1,0 +1,7 @@
+numpy
+sympy
+matplotlib
+stim
+pymatching
+bloqade-tsim
+pyzx

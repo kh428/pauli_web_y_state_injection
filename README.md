@@ -80,6 +80,44 @@ Pauli webs, which it does support.
   of the ancilla's own colour, so it fuses away and no measurement leg is drawn. A check
   enters a web exactly when the web covers its ancilla **on every leg**.
 
+
+## Circuit-level noise and parametric analysis (paper v5)
+
+Code for sections 8-10 and appendices B-D of the paper.
+
+- `circuit_noise/` - section 8. `circuits.py` builds the injection
+  protocols as stim circuits with deterministic fault insertion;
+  `census.py`/`dem_census.py` run the decoded-convention fault
+  enumeration (table 1); `sched_search*.py` and
+  `step1`-`step6_*_decoded.py` run the decoded-convention pipeline:
+  per-scheme counts, the optimised schedules, the figure 22 exports
+  (`step3_decoded_marks.py`), the 576-pair and heterogeneous
+  restart searches, and the appendix A flat figure; `mc_*.py` sample the four schemes
+  (figure 30 data), `plot_mc_v3.py` draws figure 30.
+- `parametric/` - sections 9-10. `exact_ler.py` evaluates the exact
+  post-selected probabilities by the parity expansion;
+  `verify_25over9*.py` do the fault-pair enumeration (equation 6);
+  `verify_full_*.py` the multivariate budgets (equations 7-8);
+  `gen_exact_curve.py` figure 34; `y_dindep_fixed.py` /
+  `t_dindep_assert.py` assert equations (3)/(5) against the
+  contraction at every odd distance 3-29; `cone_check.py` and
+  `interior_equality.py` back figure 33; `t_experiment.py` /
+  `t_run_final.py` / `plot_t_v2.py` the |T> campaign (figure 36);
+  `exact_T_cosets.py` / `exact_T_figure.py` the exact |T> curve (figure 37,
+  equation 9); `gen_tsim_stages*.py` export figures 31-32 and 39.
+- `figures_3d/` - the spacetime diagram builders and 3D/tikz
+  exporters shared by the paper figures (schemes, patterns, webs,
+  paper3d) plus per-figure `gen_*.py` scripts.
+- `other_schemes/` - appendices B-D: the ZZ / hook / unitary-encoder
+  schemes at distance 5 and their web verification, plus the Li
+  per-gate attribution and the Lao-Criger circuit reconstruction of
+  section 8.2, and the interactive viewer.
+- `data/` - sampled results backing figures 30 and 36
+  (`mc_results.json`, `t_results_final.json`), the t-frame exports,
+  and the exact-budget output records.
+
+Install: `pip install -r requirements.txt`.
+
 ## Licence
 
 Apache-2.0 (see `LICENSE`), matching `pyzx` and `pyzx_3d_viewer`. Generated HTML pages
